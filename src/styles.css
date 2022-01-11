@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+.TopNav {overflow: hidden;background-color: #2C272E;padding: 10px;border-bottom-style: groove  }
+.TopNav a {float: left;display: block;color: #f2f2f2;text-align: center;padding: 14px 16px;text-decoration: none;font-size: 17px;}
+.active {background-color: #2C272E;color: white;}
+.TopNav .icon {display: none;}
+.dropdown {float: left;overflow: hidden;}
+.dropdown .dropbtn {font-size: 17px;border: none;outline: none;color: white;padding: 14px 16px;background-color: inherit;font-family: inherit;margin: 0;}
+.dropdown-content {display: none;position: absolute;background-color: #f9f9f9;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;}
+.dropdown-content a {float: none;color: black;padding: 12px 16px;text-decoration: none;display: block;text-align: left;}
+.TopNav a:hover, .dropdown:hover .dropbtn {background-color: #555;color: white;}
+.dropdown-content a:hover {background-color: #ddd;color: black;}
+.dropdown:hover .dropdown-content {display: block}
+@media screen and (max-width: 600px)
+{  .TopNav a:not(:first-child), .dropdown .dropbtn {display: none;}  .TopNav a.icon {float: right;display: block;}  }
+@media screen and (max-width: 600px)
+{  .TopNav.responsive {position: relative;}  .TopNav.responsive .icon {position: absolute;right: 0;top: 0;}
+  .TopNav.responsive a {float: none;display: block;text-align: left;}
+  .TopNav.responsive .dropdown {float: none;}
+  .TopNav.responsive .dropdown-content {position: relative;}
+  .TopNav.responsive .dropdown .dropbtn {display: block;width: 100%;text-align: left;}
+}
+.game-progress:hover{background-color:#A6CF98 }
+.header-title{font-family: Serif;width:100%;text-shadow:white;color: #091b29;padding-top:10%; text-align:center}
+.background-style{ display: inline-block;width:100%;background-color:#E2C275}
+.rock, .paper, .scissors {border:3px solid #091b29; background-color: #C36A2D; padding: 20px; margin-bottom: 24%; margin-right: 10px; box-shadow: 4px 4px 4px }
+.rock-paper-scissors{display: inline-flex;padding-bottom: 20px; position: relative;animation-name: rps-game;animation-duration: 4s;animation-delay: 0.01s;animation-fill-mode: forwards; }
+.web-app{background-color: #FFF9B2;margin-left:25%;width:50%;text-align: center;font-size: larger;margin-bottom: 5%;font-weight: bolder;  padding: 15px}
+.game-in-progress{ display: inline-flex; margin: 20px; border: 1px solid white; padding: 10px }
+.game-progress{font-size: larger;font-weight: bolder;  margin-left:10px; color:#4E9F3D;margin-bottom: 10%;}
+.player1-his-record, .player2-his-record{ font-size: larger;font-weight: bolder; }
+.task-provider{font-size: larger;font-weight: bolder; background-color: #FFF9B2;margin-left:25%; width: 50%;text-align: center;margin-bottom: 40% ; padding: 15px}
+.task-developer{font-size: larger;font-weight: bolder; width: 100%;text-align: center;  }
+
+
+@keyframes rps-game{ from {left: -505px;} to {left: 2px;} }
+.game-in-progress{position: relative;animation-name: rps-game-progress;animation-duration: 4s;animation-delay: 0.1s;animation-fill-mode: forwards;}
+@keyframes rps-game-progress{ from {bottom: -700px;} to {bottom: 2px;} }
+
+@media only screen and (max-width: 620px) {  .container{width:100%;font-size: xx-small;font-family: 'Roboto Light';color: #555;text-align: left;padding: 5px;}  }

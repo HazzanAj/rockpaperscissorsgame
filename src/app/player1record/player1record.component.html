@@ -1,0 +1,230 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success p-2 text-dark bg-opacity-25">
+  <a class="navbar-brand" style="color:white;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+          aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="modal" data-target="#addPlayer1recordModal">➕ Add Player1Records <span
+          class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0">
+      <input type="search" (ngModelChange)="searchPlayer1records(key.value)" #key="ngModel" ngModel
+             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search player1records..." required>
+    </form>
+  </div>
+</nav>
+
+<!-----------------------------------------------------------Main---------------------------------------------------->
+
+
+<div class="pic-table " style="display: inline-block;width:100%" style="margin-bottom: 100%">
+
+  <div class="container" id="main-container" style="width:100%;">
+    <div class="pic" style="padding:10px;width:100% ">
+      <h2 style="font-family: Serif;text-shadow:white;color: #091b29;padding: 5px;text-align:center">
+        <b>ROCKPAPERSCISSORS GAME</b><br><br> <h4> MATCH RESULT APP</h4><br><br>
+        🧍‍♂<h4>PLAYER1 HISTORICAL RECORDS</h4>️
+      </h2>
+    </div>
+    <table border="4" style="width: 100%">
+      <thead></thead>
+      <tr>
+        <th scope="col" style="background-color:#32C1CD ">#</th>
+        <th>NAME</th>
+        <th>MATCHES</th>
+        <th>WINS</th>
+        <th>LOSS</th>
+        <th>WIN-RATIO</th>
+        <th>MOST PLAYED-HANDS</th>
+        <th><i class="fa fa-pencil"></i> UPDATE</th>
+        <th><i class="fa fa-times"></i> DELETE</th>
+      </tr>
+      <tbody style="background-color: lightyellow">
+      <tr *ngFor="let player1record of player1records; index as ind">
+        <th scope="row">{{ind}}</th>
+        <td>{{player1record?.player1Name}}</td>
+        <td>{{player1record?.player1NoOfMatches}}</td>
+        <td>{{player1record?.player1Wins}}</td>
+        <td>{{player1record?.player1Loss}}</td>
+        <td>{{player1record?.player1WinRatio}}</td>
+        <td>{{player1record?.player1MostPlayedHands}}</td>
+        <td>
+          <div class="float-right btn-group btn-group-sm"><a (click)="onOpenModal(player1record, 'edit')"
+                                                             class="btn btn-success tooltips" data-placement="top"
+                                                             data-original-title="Edit"><i class="fa fa-pencil"></i>
+          </a></div>
+        </td>
+        <td>
+          <div class="float-right btn-group btn-group-sm"><a (click)="onOpenModal(player1record, 'delete')"
+                                                             class="btn btn-danger tooltips" data-placement="top"
+                                                             data-original-title="Delete"><i
+            class="fa fa-times"></i></a></div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+
+<!-- Add Player1 Modal -->
+<div class="modal fade" id="addPlayer1recordModal" tabindex="-1" role="dialog"
+     aria-labelledby="addPlayer1recordModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPlayer1recordModalLabel">Add Player1record</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddPlayer1record(addForm)">
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1Name">Play1 Name</label>
+            <input type="text" ngModel name="player1Name" class="form-control" id="player1Name" placeholder="" required>
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1NoOfMatches">No of Matches</label>
+            <input type="text" ngModel name="player1NoOfMatches" class="form-control" id="player1NoOfMatches"
+                   placeholder="" required>
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1Wins">No of Wins</label>
+            <input type="text" ngModel name="player1Wins" class="form-control" id="player1Wins" placeholder="" required>
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1Loss">No of Loss</label>
+            <input type="text" ngModel name="player1Loss" class="form-control" id="player1Loss" placeholder="" required>
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1WinRatio">Win Ratio</label>
+            <input type="text" ngModel name="player1WinRatio" class="form-control" id="player1WinRatio" placeholder=""
+                   required>
+          </div>
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1MostPlayedHands">Most Played Hands</label>
+            <input type="text" ngModel name="player1MostPlayedHands" class="form-control" id="player1MostPlayedHands"
+                   placeholder="" required>
+          </div>
+          <div class="modal-footer" style="background-color:#32C1CD;padding: 5px; box-shadow: 4px 4px 4px gray"><em
+            style="text-align: left">Developed By: Ajao Hazzan</em>
+            <button type="button" id="add-Player1record-form" class="btn btn-secondary" data-dismiss="modal">Close
+            </button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-success">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="updatePlayer1recordModal" tabindex="-1" role="dialog"
+     aria-labelledby="player1recordEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePlayer1recordModalLabel">Edit Player1
+          <b
+            style="background-color: #FF5F7E; margin-left:10px;padding: 10px; color:#091b29 ">{{editPlayer1record?.player1Name}}</b>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+      </div>
+
+      <div class="modal-body">
+        <form #editForm="ngForm">
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1Name">Player1 Name</label>
+            <input type="text" ngModel="{{editPlayer1record?.player1Name}}" name="player1Name" class="form-control"
+                   id="player1Name" aria-describedby="player1NameHelp" placeholder="">
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1NoOfMatches">No of Matches</label>
+            <input type="text" ngModel="{{editPlayer1record?.player1NoOfMatches}}" name="player1NoOfMatches"
+                   class="form-control" id="player1NoOfMatches" aria-describedby="player1NoOfMatchesHelp"
+                   placeholder="">
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1Wins">No of Wins</label>
+            <input type="text" ngModel="{{editPlayer1record?.player1Wins}}" name="player1Wins" class="form-control"
+                   id="player1Wins" aria-describedby="player1WinsHelp" placeholder="">
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1Loss">No of Loss</label>
+            <input type="text" ngModel="{{editPlayer1record?.player1Loss}}" name="player1Loss" class="form-control"
+                   id="player1Loss" aria-describedby="player1LossHelp" placeholder="">
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1WinRatio">Win Ratio</label>
+            <input type="text" ngModel="{{editPlayer1record?.player1WinRatio}}" name="player1WinRatio"
+                   class="form-control" id="player1WinRatio" aria-describedby="player1WinRatioHelp" placeholder="">
+          </div>
+
+          <div class="form-group" style="background-color:#32C1CD;padding: 5px ">
+            <label for="player1MostPlayedHands">Most Played Hands</label>
+            <input type="text" ngModel="{{editPlayer1record?.player1MostPlayedHands}}" name="phone" class="form-control"
+                   id="player1MostPlayedHands" aria-describedby="player1MostPlayedHandsHelp" placeholder="">
+          </div>
+          <div class="modal-footer" style="background-color:#32C1CD;padding: 5px; box-shadow: 4px 4px 4px gray">
+            <button type="button" id=" " data-dismiss="modal" class="btn btn-secondary">Close</button>
+            <button (click)="onUpdatePlayer1record(editForm.value)" data-dismiss="modal" class="btn btn-success">Save
+              changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deletePlayer1recordModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Delete Player1record</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete Player1record {{deletePlayer1record?.name}}?</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button (click)="onDeletePlayer1record(deletePlayer1record?.id)" class="btn btn-danger" data-dismiss="modal">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no player -->
+<div *ngIf="player1records?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO Player1record!</h4>
+    <p>No Player1records were found.</p>
+  </div>
+</div>
+
+
